@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>รายการหนังสือ</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header-section">
+            <h1>📚 รายการหนังสือทั้งหมด</h1>
+            <div>
+                <a href="/create" class="btn btn-primary">➕ เพิ่มหนังสือใหม่</a>
+                <a href="/report" class="btn btn-secondary">📊 ดูรายงาน</a>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ชื่อหนังสือ (Title)</th>
+                    <th>ราคา (Price)</th>
+                    <th>ผู้แต่ง (Author)</th>
+                    <th>หมวดหมู่ (Category)</th>
+                    <th>จัดการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% books.forEach(b => { %>
+                    <tr>
+                        <td><%= b.id %></td>
+                        <td><strong><%= b.title %></strong></td>
+                        <td>฿<%= b.price %></td>
+                        <td><%= b.author ? b.author.name : '-' %></td>
+                        <td><%= b.category ? b.category.name : '-' %></td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="/view/<%= b.id %>" class="btn btn-sm btn-view">👁️ ดู</a>
+                                <a href="/edit/<%= b.id %>" class="btn btn-sm btn-edit">✏️ แก้ไข</a>
+                                <a href="/delete/<%= b.id %>" class="btn btn-sm btn-delete" onclick="return confirm('แน่ใจหรือไม่ที่จะลบหนังสือเล่มนี้?');">❌ ลบ</a>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div> 
+
+</body>
+</html>

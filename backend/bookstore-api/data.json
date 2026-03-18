@@ -1,0 +1,81 @@
+{
+  "book": [
+    {
+      "id": 1,
+      "title": "The Pragmatic Programmer",
+      "author": "Andrew Hunt"
+    },
+    {
+      "id": 2,
+      "title": "Clean Code",
+      "author": "Robert C. Martin"
+    },
+    {
+      "id": 3,
+      "title": "Atomic Habits",
+      "author": "James Clear"
+    },
+    {
+      "id": 4,
+      "title": "Deep Work",
+      "author": "Cal Newport"
+    },
+    {
+      "id": 5,
+      "title": "Eloquent JavaScript",
+      "author": "Marijn Haverbeke"
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Brian Smith",
+      "email": "brian.smith@example.com"
+    },
+    {
+      "id": 3,
+      "name": "Chloe Tan",
+      "email": "chloe.tan@example.com"
+    },
+    {
+      "id": 4,
+      "name": "Daniel Lee",
+      "email": "daniel.lee@example.com"
+    }
+  ],
+  "borrowing": [
+    {
+      "id": 1,
+      "userId": 1,
+      "bookId": 2,
+      "borrowDate": "2026-03-01T09:30:00.000Z",
+      "returnDate": "2026-03-08T15:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "bookId": 1,
+      "borrowDate": "2026-03-03T10:00:00.000Z",
+      "returnDate": null
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "bookId": 4,
+      "borrowDate": "2026-03-05T13:15:00.000Z",
+      "returnDate": "2026-03-12T11:20:00.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "bookId": 3,
+      "borrowDate": "2026-03-10T08:45:00.000Z",
+      "returnDate": null
+    }
+  ]
+}

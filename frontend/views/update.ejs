@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แก้ไขหนังสือ</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-section">
+            <h1>✏️ แก้ไขข้อมูลหนังสือ (ID: <%= book.id %>)</h1>
+        </div>
+
+        <form method="POST" action="/edit/<%= book.id %>">
+            <div style="margin-bottom: 15px;">
+                <label>ชื่อหนังสือ (Title):</label><br>
+                <input type="text" name="title" value="<%= book.title %>" required>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label>ราคา (Price):</label><br>
+                <input type="number" step="0.01" name="price" value="<%= book.price %>" required>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label>ผู้แต่ง (Author):</label><br>
+                <input type="text" name="authorName" value="<%= book.author ? book.author.name : '' %>" required>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label>หมวดหมู่ (Category):</label><br>
+                <select name="genreId" required>
+                    <option value="">-- เลือกหมวดหมู่ --</option>
+                    <% categories.forEach(c => { %>
+                        <option value="<%= c.id %>" <%= c.id === book.genreId ? 'selected' : '' %> >
+                            <%= c.name %>
+                        </option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success">💾 บันทึกการแก้ไข</button>
+            <a href="/" class="btn btn-secondary" style="margin-left: 10px;">⬅ ยกเลิกและกลับหน้าแรก</a>
+        </form>
+    </div>
+
+</body>
+</html>
