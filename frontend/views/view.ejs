@@ -3,28 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>รายละเอียดหนังสือ</title>
-    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <h2>📖 รายละเอียดหนังสือ</h2>
+    
+    <ul>
+        <li><b>ID หนังสือ:</b> <%= book.id %></li>
+        <li><b>ชื่อหนังสือ (Title):</b> <%= book.title %></li>
+        <li><b>ราคา (Price):</b> ฿<%= book.price %></li>
+        <li><b>ผู้แต่ง (Author):</b> <%= book.author ? book.author.name : '-' %></li>
+        <li><b>หมวดหมู่ (Category):</b> <%= book.category ? book.category.name : '-' %></li>
+    </ul>
 
-    <div class="container">
-        <div class="header-section">
-            <h1>📖 รายละเอียดหนังสือ</h1>
-        </div>
-        
-        <div class="detail-box">
-            <div class="detail-item"><span class="detail-label">ID หนังสือ:</span> <%= book.id %></div>
-            <div class="detail-item"><span class="detail-label">ชื่อหนังสือ (Title):</span> <%= book.title %></div>
-            <div class="detail-item"><span class="detail-label">ราคา (Price):</span> ฿<%= book.price %></div>
-            <div class="detail-item"><span class="detail-label">ผู้แต่ง (Author):</span> <%= book.author ? book.author.name : '-' %></div>
-            <div class="detail-item"><span class="detail-label">หมวดหมู่ (Category):</span> <%= book.category ? book.category.name : '-' %></div>
-        </div>
-
-        <div>
-            <a href="/edit/<%= book.id %>" class="btn btn-primary">✏️ แก้ไขข้อมูล</a>
-            <a href="/" class="btn btn-secondary" style="margin-left: 10px;">⬅ กลับหน้าแรก</a>
-        </div>
-    </div>
-
+    <br>
+    <a href="/edit/<%= book.id %>">✏️ แก้ไขข้อมูล</a> | 
+    <a href="/">⬅ กลับหน้าแรก</a>
 </body>
 </html>

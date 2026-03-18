@@ -3,60 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>รายงานหนังสือ</title>
-    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <h2>📊 หน้ารายงานหนังสือ (Report)</h2>
 
-    <div class="container">
-        
-        <div class="header-section">
-            <h1>📊 หน้ารายงานหนังสือ (Report)</h1>
-            <a href="/" class="btn btn-secondary">⬅ กลับหน้าแรก</a>
-        </div>
+    <form method="GET" action="/report">
+        <label>ค้นหาตามหมวดหมู่:</label>
+        <select name="genreId">
+            <option value="">-- แสดงทั้งหมด (All) --</option>
+            <% categories.forEach(c => { %>
+                <option value="<%= c.id %>" <%= c.id == selectedGenre ? 'selected' : '' %>>
+                    <%= c.name %>
+                </option>
+            <% }) %>
+        </select>
+        <button type="submit">🔍 กรองข้อมูล</button>
+    </form>
 
-        <form method="GET" action="/report" class="filter-box">
-            <label style="margin: 0;">ค้นหาตามหมวดหมู่:</label>
-            <select name="genreId">
-                <option value="">-- แสดงทั้งหมด (All) --</option>
-                <% categories.forEach(c => { %>
-                    <option value="<%= c.id %>" <%= c.id == selectedGenre ? 'selected' : '' %>>
-                        <%= c.name %>
-                    </option>
-                <% }) %>
-            </select>
-            <button type="submit" class="btn btn-primary">🔍 กรองข้อมูล</button>
-        </form>
+    <br>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ชื่อหนังสือ (Title)</th>
-                    <th>ราคา (Price)</th>
-                    <th>ผู้แต่ง (Author)</th>
-                    <th>หมวดหมู่ (Category)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% if (books.length > 0) { %>
-                    <% books.forEach(b => { %>
-                        <tr>
-                            <td><strong><%= b.title %></strong></td>
-                            <td>฿<%= b.price %></td>
-                            <td><%= b.author ? b.author.name : '-' %></td>
-                            <td><%= b.category ? b.category.name : '-' %></td>
-                        </tr>
-                    <% }) %>
-                <% } else { %>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr style="background-color: #eee;">
+                <th>ชื่อหนังสือ (Title)</th>
+                <th>ราคา (Price)</th>
+                <th>ผู้แต่ง (Author)</th>
+                <th>หมวดหมู่ (Category)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (books.length > 0) { %>
+                <% books.forEach(b => { %>
                     <tr>
-                        <td colspan="4" style="text-align: center; color: #e74c3c; padding: 30px;">
-                            ❌ ไม่พบข้อมูลหนังสือในหมวดหมู่นี้
-                        </td>
+                        <td><%= b.title %></td>
+                        <td>฿<%= b.price %></td>
+                        <td><%= b.author ? b.author.name : '-' %></td>
+                        <td><%= b.category ? b.category.name : '-' %></td>
                     </tr>
-                <% } %>
-            </tbody>
-        </table>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4" style="text-align: center;">ไม่พบข้อมูลหนังสือในหมวดหมู่นี้</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
 
-    </div> 
-
+    <br>
+    <a href="/">⬅ กลับหน้าแรก</a>
 </body>
 </html>

@@ -9,9 +9,6 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// 🌟 เพิ่มบรรทัดนี้ เพื่อบอกให้ Express รู้จักไฟล์ CSS ในโฟลเดอร์ public
-app.use(express.static(path.join(__dirname, 'public')));
-
 // ======================
 // หน้าแรก (แสดงรายการหนังสือทั้งหมด)
 // ======================
